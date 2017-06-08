@@ -24,7 +24,7 @@ default_platform :ios
 
 companyPrefix = 'XCE'
 repoName = 'StaticState'
-projName = repoName + '.xcodeproj'
+projName = 'Main' + '.xcodeproj'
 podspecFilePath = './' + companyPrefix + repoName + '.podspec'
 
 #===
