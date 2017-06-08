@@ -54,9 +54,16 @@ extension StatefulWithHelpers
     //===
     
     func set<Input: State>(
-        _ newState: Input
+        _ newState: Input?
         )
     {
         state = newState
+    }
+    
+    //===
+    
+    func resetCurrentState()
+    {
+        return state = nil
     }
 }
