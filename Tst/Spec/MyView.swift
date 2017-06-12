@@ -9,7 +9,7 @@ class MyView { }
 
 //=== States
 
-extension MyView: Stateful
+extension MyView: StatefulWithHelpers
 {
     struct Normal: State { }
     
@@ -17,7 +17,7 @@ extension MyView: Stateful
     
     struct Disabled: State
     {
-        let opacity: Float
+        var opacity: Float
     }
     
     //===
