@@ -2,6 +2,9 @@ import Foundation
 
 //===
 
+/**
+ Provides access to `state` property via functions.
+ */
 public
 protocol StatefulWithHelpers: Stateful { }
 
@@ -10,6 +13,21 @@ protocol StatefulWithHelpers: Stateful { }
 public
 extension StatefulWithHelpers
 {
+    /**
+     Provides read-only access to the `state` property value from `Stateful` protocol.
+     
+     Use as follows:
+     
+     ```
+     class MyView: UIView, StatefulWithHelpers { }
+     
+     let aView = MyView()
+     
+     let crrent = aView.currentState()
+     ```
+     
+     - Returns: Current state as instance of `State` without conversion to a specific state type, if it's set, or `nil` otherwise.
+     */
     func currentState() -> State?
     {
         return state
@@ -17,12 +35,34 @@ extension StatefulWithHelpers
     
     //===
     
-    func at<Input: State>(
-        _: Input.Type
-        ) throws -> Input
+    /**
+     Allows to check if current state is of expected type or not. The `ExpectedState` return type will be inferred from context.
+     
+     Use as follows:
+     
+     ```
+     class MyView: UIView, StatefulWithHelpers
+     {
+        struct Normal: State { }
+     }
+     
+     let aView = MyView()
+     
+     if
+        let n: MyView.Normal = try? aView.currentState()
+     {
+        /*...*/
+     }
+     ```
+     
+     - Throws: `Errors.WrongState` if current state is NOT of type `ExpectedState`.
+     
+     - Returns: Current state as instance of `ExpectedState` type.
+     */
+    func currentState<ExpectedState: State>() throws -> ExpectedState
     {
         if
-            let result = state as? Input
+            let result = state as? ExpectedState
         {
             return result
         }
@@ -34,13 +74,40 @@ extension StatefulWithHelpers
     
     //===
     
-    func update<Input: State>(
-        _: Input.Type,
-        mutation: (inout Input) -> Void
+    /**
+     Allows to mutate current state, if it's of expected type.
+     
+     Use as follows:
+     
+     ```
+     class MyView: UIView, StatefulWithHelpers
+     {
+        struct Disabled: State
+        {
+            var opacity: Float
+        }
+     }
+     
+     let aView = MyView()
+     
+     try? aView.update(MyView.Disabled.self){
+     
+        $0.opacity += 0.1
+     }
+     ```
+     
+     - Parameter expected: Expected current state type.
+     - Parameter mutation: Closure that takes as `inout` input parameter an instance of `expected` type. This closure will be used to mutate currents state, current state will be passed into it to perform mutations.
+     
+     - Throws: `Errors.WrongState` if current state is NOT of `expected` type.
+     */
+    func update<ExpectedState: State>(
+        _ expected: ExpectedState.Type,
+        mutation: (inout ExpectedState) -> Void
         ) throws
     {
         if
-            var result = state as? Input
+            var result = state as? ExpectedState
         {
             mutation(&result)
             state = result
@@ -53,15 +120,37 @@ extension StatefulWithHelpers
     
     //===
     
-    func set<Input: State>(
-        _ newState: Input?
-        )
+    /**
+     Allows to set current state to `newState`.
+     
+     Use as follows:
+     
+     ```
+     class MyView: UIView, StatefulWithHelpers
+     {
+         struct Disabled: State
+         {
+             var opacity: Float
+         }
+     }
+     
+     let aView = MyView()
+     
+     aView.set(MyView.Disabled(opacity: 0.3))
+     ```
+     
+     - Parameter newState: An instance of type that conforms to `State` protocol, or `nil`. This value will be set as new current state.
+     */
+    func set<Input: State>(_ newState: Input?)
     {
         state = newState
     }
     
     //===
     
+    /**
+     Sets current state to `nil`.
+     */
     func resetCurrentState()
     {
         return state = nil

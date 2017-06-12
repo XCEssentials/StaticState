@@ -11,5 +11,5 @@ public
 extension State
 {
     static
-    var id: String { return "\(self)" }
+    var id: String { return String(reflecting: self) }
 }
