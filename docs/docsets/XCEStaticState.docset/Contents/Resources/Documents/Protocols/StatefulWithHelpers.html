@@ -15,6 +15,7 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">XCEStaticState Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/XCEssentials/StaticState"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -73,6 +74,69 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:FE14XCEStaticStatePS_19StatefulWithHelpers3setuRd__S_5StaterFGSqqd___T_"></a>
+                    <a name="//apple_ref/swift/Method/set(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE14XCEStaticStatePS_19StatefulWithHelpers3setuRd__S_5StaterFGSqqd___T_">set(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Allows to set current state to <code>newState</code>.</p>
+
+<p>Use as follows:</p>
+<pre class="highlight plaintext"><code>class MyView: UIView, StatefulWithHelpers
+{
+struct Disabled: State
+{
+var opacity: Float
+}
+}
+
+let aView = MyView()
+
+aView.set(MyView.Disabled(opacity: 0.3))
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">Input</span><span class="p">:</span> <span class="kt"><a href="../Protocols/State.html">State</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">newState</span><span class="p">:</span> <span class="kt">Input</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newState</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An instance of type that conforms to <code>State</code> protocol, or <code>nil</code>. This value will be set as new current state.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:FE14XCEStaticStatePS_19StatefulWithHelpers12currentStateFT_GSqPS_5State__"></a>
                     <a name="//apple_ref/swift/Method/currentState()" class="dashAnchor"></a>
                     <a class="token" href="#/s:FE14XCEStaticStatePS_19StatefulWithHelpers12currentStateFT_GSqPS_5State__">currentState()</a>
@@ -93,7 +157,7 @@
 
 let aView = MyView()
 
-let crrent = aView.currentState()
+let current = aView.currentState()
 </code></pre>
 
                       </div>
@@ -232,70 +296,7 @@ try? aView.update(MyView.Disabled.self){
                               </td>
                               <td>
                                 <div>
-                                  <p>Closure that takes as <code>inout</code> input parameter an instance of <code>expected</code> type. This closure will be used to mutate currents state, current state will be passed into it to perform mutations.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FE14XCEStaticStatePS_19StatefulWithHelpers3setuRd__S_5StaterFGSqqd___T_"></a>
-                    <a name="//apple_ref/swift/Method/set(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE14XCEStaticStatePS_19StatefulWithHelpers3setuRd__S_5StaterFGSqqd___T_">set(_:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Extension method
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Allows to set current state to <code>newState</code>.</p>
-
-<p>Use as follows:</p>
-<pre class="highlight plaintext"><code>class MyView: UIView, StatefulWithHelpers
-{
-    struct Disabled: State
-    {
-        var opacity: Float
-    }
-}
-
-let aView = MyView()
-
-aView.set(MyView.Disabled(opacity: 0.3))
-</code></pre>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">Input</span><span class="p">:</span> <span class="kt"><a href="../Protocols/State.html">State</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">newState</span><span class="p">:</span> <span class="kt">Input</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>newState</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An instance of type that conforms to <code>State</code> protocol, or <code>nil</code>. This value will be set as new current state.</p>
+                                  <p>Closure that will be used to mutate current state.</p>
                                 </div>
                               </td>
                             </tr>
@@ -340,7 +341,7 @@ aView.set(MyView.Disabled(opacity: 0.3))
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://XCEssentials.github.io/StaticState" target="_blank" rel="external">Maxim Khatskevich</a>. All rights reserved. (Last updated: 2017-06-13)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/maximkhatskevich" target="_blank" rel="external">Maxim Khatskevich</a>. All rights reserved. (Last updated: 2017-06-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
