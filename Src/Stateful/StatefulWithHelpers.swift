@@ -14,6 +14,34 @@ public
 extension StatefulWithHelpers
 {
     /**
+     Allows to set current state to `newState`.
+     
+     Use as follows:
+     
+     ```
+     class MyView: UIView, StatefulWithHelpers
+     {
+     struct Disabled: State
+     {
+     var opacity: Float
+     }
+     }
+     
+     let aView = MyView()
+     
+     aView.set(MyView.Disabled(opacity: 0.3))
+     ```
+     
+     - Parameter newState: An instance of type that conforms to `State` protocol, or `nil`. This value will be set as new current state.
+     */
+    func set<Input: State>(_ newState: Input?)
+    {
+        state = newState
+    }
+    
+    //===
+    
+    /**
      Provides read-only access to the `state` property value from `Stateful` protocol.
      
      Use as follows:
@@ -116,34 +144,6 @@ extension StatefulWithHelpers
         {
             throw Errors.WrongState()
         }
-    }
-    
-    //===
-    
-    /**
-     Allows to set current state to `newState`.
-     
-     Use as follows:
-     
-     ```
-     class MyView: UIView, StatefulWithHelpers
-     {
-         struct Disabled: State
-         {
-             var opacity: Float
-         }
-     }
-     
-     let aView = MyView()
-     
-     aView.set(MyView.Disabled(opacity: 0.3))
-     ```
-     
-     - Parameter newState: An instance of type that conforms to `State` protocol, or `nil`. This value will be set as new current state.
-     */
-    func set<Input: State>(_ newState: Input?)
-    {
-        state = newState
     }
     
     //===
