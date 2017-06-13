@@ -22,10 +22,15 @@ default_platform :ios
 
 #===
 
+companyName = 'XCEssentials'
 companyPrefix = 'XCE'
 repoName = 'StaticState'
 projName = 'Main' + '.xcodeproj'
 podspecFilePath = './' + companyPrefix + repoName + '.podspec'
+
+author = '"Maxim Khatskevich"'
+authorURL = 'https://github.com/maximkhatskevich'
+schemeToBuild = 'Fwk'
 
 #===
 
@@ -34,6 +39,13 @@ platform :ios do
   lane :inc_version_and_commit do
 
     ensure_git_status_clean
+
+    # ===
+
+    jazzy
+
+    sh 'git add ../.'
+    sh 'git commit -m "Updated docs with Jazzy"'
 
     # ===
 
