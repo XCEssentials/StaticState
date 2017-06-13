@@ -48,7 +48,7 @@ extension MyView
     
     struct Disabled: State
     {
-        let opacity: Float
+        var opacity: Float
     }
     
     //===
@@ -70,7 +70,7 @@ The object which internal state we want to track must conform to `Stateful` prot
 var state: State?
 ```
 
-Later we can set current state as follows:
+We can set current state as follows:
 
 ```swift
 extension MyView: Stateful { }
@@ -83,7 +83,7 @@ aView.state = MyView.Highlighted(color: 1)
 // 'aView.state' is now 'Highlighted' with 'color' equal to '1'
 ```
 
-Note, that in the beginning `aView.state` is `nil` until you set a value explicitly first time. After you assign a value, it holds it automatically until you assign another value, `nil` or the `aView` object is deallocated.
+Note, that in the beginning the `state` property is `nil` until you set a value explicitly; after this it holds assigned value indefinitely until you assign another value, `nil` or the object itself is deallocated.
 
 ```swift
 var aView = MyView()
@@ -91,7 +91,7 @@ var aView = MyView()
 aView.state = MyView.Normal()
 // 'aView.state' is now 'Normal'
 // ...
-aView = MyView() // released previosly created object
+aView = MyView() // released previosly created object of type 'MyView'
 // 'aView.state' is now 'nil'
 aView.state = MyView.Disabled(opacity: 0.3)
 // 'aView.state' is now 'Disabled' with 'opacity' equal to '0.3'
@@ -101,25 +101,22 @@ aView.state = MyView.Disabled(opacity: 0.3)
 
 ### StatefulWithHelpers
 
-`StatefulWithHelpers` protocol inherits from `Stateful` and allows to deal with `state` property solely via functions:
-
-- `func currentState() -> State?` returns current state, if set, or `nil` otherwise;
-- `func at<Input: State>(_: Input.Type ) throws -> Input` returns current state, if it is an instance of type `Input`, or throws `Errors.WrongState` otherwise;
-- `func update<Input: State>(_: Input.Type, mutation: (inout Input) -> Void throws` allows to mutate current state (by calling the mutation closure and passing there current state as input parameter), or throws `Errors.WrongState` otherwise;
-- `func set<Input: State>(_ newState: Input?)` updates current state with `newState`;
-- `func resetCurrentState()` sets current state to `nil`.
+`StatefulWithHelpers` protocol inherits from `Stateful` and allows to deal with `state` property via functions.
 
 ```swift
 extension MyView: StatefulWithHelpers { }
-// ...
+//...
 let aView = MyView()
-// ...
+//...
 aView.set(MyView.Normal())
-// 'aView.currentState()' now returns 'Normal'
-aView.set(MyView.Highlighted(color: 1))
-// 'aView.currentState()' now returns 'Highlighted' with 'color' equal to '1'
-let h = try! aView.at(MyView.Highlighted.self)
-try? aView.update(MyView.Highlighted.self) { $0.color = h.color + 1 }
-// 'aView.currentState()' now returns 'Highlighted' with 'color' equal to '2'
+// current state of 'aView' object is 'Normal'
+aView.set(MyView.Disabled(opacity: 0.3))
+// current state of 'aView' object is 'Disabled' with 'opacity' equal to '0.3'
+try? aView.update(MyView.Disabled.self){ $0.opacity += 0.2 }
+// current state of 'aView' object is 'Disabled' with 'opacity' equal to '0.5'
+let d: MyView.Disabled = try! aView.currentState()
+// 'd' holds an instace of 'Disabled' type with 'opacity' equal to '0.5'
+aView.resetCurrentState()
+// current state of 'aView' object is 'nil'
 ```
 

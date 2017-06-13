@@ -7,7 +7,7 @@ import XCETesting
 
 //===
 
-class Main: XCTestCase
+class Tst_Stateful: XCTestCase
 {
     let aView = MyView()
     
@@ -33,29 +33,35 @@ class Main: XCTestCase
         super.tearDown()
     }
     
-    func testOne()
+    //===
+    
+    func testStartClean()
     {
-        RXC.isNil("Current state is undefined, we start clean") {
+        RXC.isNil("Current state is undefined, we start clean.") {
             
             aView.state
         }
-        
-        //===
-        
+    }
+    
+    //===
+    
+    func testAssignAndHoldLatestAssignedValue()
+    {
         aView.state = MyView.Disabled(opacity: 0.3)
         aView.state = MyView.Normal()
         
         //===
         
-        RXC.isTrue("Current state became Normal") {
+        RXC.isTrue("Current state became 'Normal'.") {
             
             aView.state is MyView.Normal
         }
-        
-        //===
-        
-        // applying twice same state to check update block execution
-        
+    }
+    
+    //===
+    
+    func testAssignTwiceDifferentInstancesOfSameState()
+    {
         let latestHighlightedColor = 2
         
         aView.state = MyView.Highlighted(color: 1)
@@ -64,13 +70,15 @@ class Main: XCTestCase
         //===
         
         let highlighted =
-        
-        RXC.value("Current state became Highlighted") {
+            
+        RXC.value("Current state became 'Highlighted'.") {
             
             aView.state as? MyView.Highlighted
         }
         
-        RXC.isTrue("Current state holds latest assigned value") {
+        //===
+        
+        RXC.isTrue("Current state holds latest assigned value.") {
             
             highlighted?.color == latestHighlightedColor
         }

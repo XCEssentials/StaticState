@@ -22,16 +22,28 @@ default_platform :ios
 
 #===
 
+companyName = 'XCEssentials'
 companyPrefix = 'XCE'
 repoName = 'StaticState'
+repoURL = 'https://github.com/' + companyName + '/' + repoName
+moduleName = companyPrefix + repoName
 projName = 'Main' + '.xcodeproj'
-podspecFilePath = './' + companyPrefix + repoName + '.podspec'
+podspecFilePath = './' + moduleName + '.podspec'
+
+author = '"Maxim Khatskevich"'
+authorURL = 'https://github.com/maximkhatskevich'
 
 #===
 
 platform :ios do
 
-  lane :inc_version_and_commit do
+  lane :finalize_release do
+
+    ensure_git_branch(
+      branch: 'release/*'
+    )
+
+    # ===
 
     ensure_git_status_clean
 
@@ -42,21 +54,7 @@ platform :ios do
 
     # === Infer new version number
 
-    currentBranch = git_branch
-
-    if currentBranch.include? 'release/'
-
-      # we are on a release branch
-
-      defaultNewVersion = currentBranch.split('/').last
-
-    else
-
-      # we are NOT on a release branch
-
-      defaultNewVersion = ''
-
-    end
+    defaultNewVersion = git_branch.split('/').last
 
     # === Define new version number
 
@@ -106,6 +104,21 @@ platform :ios do
       path: podspecFilePath,
       message: 'Version Bump to ' + newVersionNumber + ' in Podspec file'
     )
+
+    # === Update docs
+
+    sh 'jazzy' +
+      ' --source-directory ./../' +
+      ' --output ./../docs' +
+      ' --podspec ./../' + moduleName + '.podspec' +
+      ' --author ' + author +
+      ' --author_url ' + authorURL +
+      ' --github_url ' + repoURL +
+      ' --module ' + moduleName +
+      ' --module-version ' + newVersionNumber
+
+    sh 'git add ../.'
+    sh 'git commit -m "Updated docs with Jazzy"'
 
   end
 
