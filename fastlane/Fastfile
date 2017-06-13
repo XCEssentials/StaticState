@@ -36,11 +36,17 @@ schemeToBuild = 'Fwk'
 
 platform :ios do
 
-  lane :inc_version_and_commit do
+  lane :finalize_release do
+
+    ensure_git_branch(
+      branch: 'release/*'
+    )
+
+    # ===
 
     ensure_git_status_clean
 
-    # ===
+    # === Update docs
 
     jazzy
 
@@ -54,21 +60,7 @@ platform :ios do
 
     # === Infer new version number
 
-    currentBranch = git_branch
-
-    if currentBranch.include? 'release/'
-
-      # we are on a release branch
-
-      defaultNewVersion = currentBranch.split('/').last
-
-    else
-
-      # we are NOT on a release branch
-
-      defaultNewVersion = ''
-
-    end
+    defaultNewVersion = git_branch.split('/').last
 
     # === Define new version number
 
