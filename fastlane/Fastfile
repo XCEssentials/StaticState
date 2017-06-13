@@ -25,12 +25,13 @@ default_platform :ios
 companyName = 'XCEssentials'
 companyPrefix = 'XCE'
 repoName = 'StaticState'
+repoURL = 'https://github.com/' + companyName + '/' + repoName
+moduleName = companyPrefix + repoName
 projName = 'Main' + '.xcodeproj'
-podspecFilePath = './' + companyPrefix + repoName + '.podspec'
+podspecFilePath = './' + moduleName + '.podspec'
 
 author = '"Maxim Khatskevich"'
 authorURL = 'https://github.com/maximkhatskevich'
-schemeToBuild = 'Fwk'
 
 #===
 
@@ -45,13 +46,6 @@ platform :ios do
     # ===
 
     ensure_git_status_clean
-
-    # === Update docs
-
-    jazzy
-
-    sh 'git add ../.'
-    sh 'git commit -m "Updated docs with Jazzy"'
 
     # ===
 
@@ -110,6 +104,21 @@ platform :ios do
       path: podspecFilePath,
       message: 'Version Bump to ' + newVersionNumber + ' in Podspec file'
     )
+
+    # === Update docs
+
+    sh 'jazzy' +
+      ' --source-directory ./../' +
+      ' --output ./../docs' +
+      ' --podspec ./../' + moduleName + '.podspec' +
+      ' --author ' + author +
+      ' --author_url ' + authorURL +
+      ' --github_url ' + repoURL +
+      ' --module ' + moduleName +
+      ' --module-version ' + newVersionNumber
+
+    sh 'git add ../.'
+    sh 'git commit -m "Updated docs with Jazzy"'
 
   end
 
