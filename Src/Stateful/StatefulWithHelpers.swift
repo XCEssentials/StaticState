@@ -23,7 +23,7 @@ extension StatefulWithHelpers
      
      let aView = MyView()
      
-     let crrent = aView.currentState()
+     let current = aView.currentState()
      ```
      
      - Returns: Current state as instance of `State` without conversion to a specific state type, if it's set, or `nil` otherwise.
@@ -97,7 +97,7 @@ extension StatefulWithHelpers
      ```
      
      - Parameter expected: Expected current state type.
-     - Parameter mutation: Closure that takes as `inout` input parameter an instance of `expected` type. This closure will be used to mutate currents state, current state will be passed into it to perform mutations.
+     - Parameter mutation: Closure that will be used to mutate current state.
      
      - Throws: `Errors.WrongState` if current state is NOT of `expected` type.
      */
