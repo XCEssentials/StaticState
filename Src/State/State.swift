@@ -19,12 +19,12 @@ extension State
      
      Use as follows (assume the module name is "MyApp"):
      
-     ```
+     ```swift
      class MyView: UIView, Stateful
      {
          struct Normal: State { }
      }
-     //...
+     
      let aView = MyView()
      aView.state = MyView.Normal()
      print(type(of: aView.state).id) // MyApp.MyView.Normal

@@ -18,13 +18,13 @@ extension StatefulWithHelpers
      
      Use as follows:
      
-     ```
+     ```swift
      class MyView: UIView, StatefulWithHelpers
      {
-     struct Disabled: State
-     {
-     var opacity: Float
-     }
+         struct Disabled: State
+         {
+             var opacity: Float
+         }
      }
      
      let aView = MyView()
@@ -46,7 +46,7 @@ extension StatefulWithHelpers
      
      Use as follows:
      
-     ```
+     ```swift
      class MyView: UIView, StatefulWithHelpers { }
      
      let aView = MyView()
@@ -68,7 +68,7 @@ extension StatefulWithHelpers
      
      Use as follows:
      
-     ```
+     ```swift
      class MyView: UIView, StatefulWithHelpers
      {
         struct Normal: State { }
@@ -79,7 +79,7 @@ extension StatefulWithHelpers
      if
         let n: MyView.Normal = try? aView.currentState()
      {
-        /*...*/
+        //...
      }
      ```
      
@@ -107,7 +107,7 @@ extension StatefulWithHelpers
      
      Use as follows:
      
-     ```
+     ```swift
      class MyView: UIView, StatefulWithHelpers
      {
         struct Disabled: State
