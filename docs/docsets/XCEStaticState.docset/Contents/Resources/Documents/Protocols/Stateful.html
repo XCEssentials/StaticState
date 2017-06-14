@@ -90,17 +90,17 @@
                         <p>Current state of the object. When it&rsquo;s <code>nil</code>, then it means that current state is <q>undefined</q>. This is a dynamic property, its life time is limited by lifetime of the object to which this property belongs and is completely independent from the same property of other instances of the same type.</p>
 
 <p>Use as follows:</p>
-<pre class="highlight plaintext"><code>class MyView: UIView, Stateful
-{
-    struct Normal: State { }
-    struct Highlighted: State { let color: Int }
-}
-// ...
-let aView = MyView()
-// ...
-aView.state = MyView.Normal()
-aView.state = MyView.Highlighted(color: 1)
-print(aView.state) // MyView.Highlighted(color: 1)
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">Stateful</span>
+<span class="p">{</span>
+    <span class="kd">struct</span> <span class="kt">Normal</span><span class="p">:</span> <span class="kt">State</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="kd">struct</span> <span class="kt">Highlighted</span><span class="p">:</span> <span class="kt">State</span> <span class="p">{</span> <span class="k">let</span> <span class="nv">color</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ...</span>
+<span class="k">let</span> <span class="nv">aView</span> <span class="o">=</span> <span class="kt">MyView</span><span class="p">()</span>
+<span class="c1">// ...</span>
+<span class="n">aView</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="kt">MyView</span><span class="o">.</span><span class="kt">Normal</span><span class="p">()</span>
+<span class="n">aView</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="kt">MyView</span><span class="o">.</span><span class="kt">Highlighted</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">aView</span><span class="o">.</span><span class="n">state</span><span class="p">)</span> <span class="c1">// MyView.Highlighted(color: 1)</span>
 </code></pre>
 
                       </div>
