@@ -11,6 +11,11 @@ Turn any object into a discrete system where each state is a static data contain
 ## How to install
 
 The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState).
+The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState):
+
+```ruby
+pod 'XCEStaticState', '~> 1.1'
+```
 
 
 
