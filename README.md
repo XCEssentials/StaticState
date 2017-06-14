@@ -42,16 +42,15 @@ class MyView
 ```swift
 extension MyView
 {
-    struct Normal: State { }
-    
-    //===
+    struct Normal: State
+    {
+    	// no members here
+    }
     
     struct Disabled: State
     {
         var opacity: Float
     }
-    
-    //===
     
     struct Highlighted: State
     {
@@ -74,9 +73,9 @@ We can set current state as follows:
 
 ```swift
 extension MyView: Stateful { }
-// ...
+
 let aView = MyView()
-// ...
+
 aView.state = MyView.Disabled(opacity: 0.3)
 aView.state = MyView.Normal()
 aView.state = MyView.Highlighted(color: 1)
@@ -87,12 +86,13 @@ Note, that in the beginning the `state` property is `nil` until you set a value 
 
 ```swift
 var aView = MyView()
-// ...
+
 aView.state = MyView.Normal()
 // 'aView.state' is now 'Normal'
-// ...
+
 aView = MyView() // released previosly created object of type 'MyView'
 // 'aView.state' is now 'nil'
+
 aView.state = MyView.Disabled(opacity: 0.3)
 // 'aView.state' is now 'Disabled' with 'opacity' equal to '0.3'
 ```
@@ -105,18 +105,22 @@ aView.state = MyView.Disabled(opacity: 0.3)
 
 ```swift
 extension MyView: StatefulWithHelpers { }
-//...
+
 let aView = MyView()
-//...
+
 aView.set(MyView.Normal())
-// current state of 'aView' object is 'Normal'
+// current state of 'aView' object is now 'Normal'
+
 aView.set(MyView.Disabled(opacity: 0.3))
-// current state of 'aView' object is 'Disabled' with 'opacity' equal to '0.3'
+// current state of 'aView' object is now 'Disabled' with 'opacity' equal to '0.3'
+
 try? aView.update(MyView.Disabled.self){ $0.opacity += 0.2 }
-// current state of 'aView' object is 'Disabled' with 'opacity' equal to '0.5'
+// current state of 'aView' object is now 'Disabled' with 'opacity' equal to '0.5'
+
 let d: MyView.Disabled = try! aView.currentState()
-// 'd' holds an instace of 'Disabled' type with 'opacity' equal to '0.5'
+// 'd' now holds an instace of 'Disabled' type with 'opacity' equal to '0.5'
+
 aView.resetCurrentState()
-// current state of 'aView' object is 'nil'
+// current state of 'aView' object is now 'nil'
 ```
 
