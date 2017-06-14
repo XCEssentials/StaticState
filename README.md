@@ -3,14 +3,13 @@
 [![CocoaPods](https://img.shields.io/cocoapods/p/XCEStaticState.svg)](https://cocoapods.org/?q=XCEStaticState)
 [![license](https://img.shields.io/github/license/XCEssentials/StaticState.svg)](https://opensource.org/licenses/MIT)
 
-## Introduction
+# Introduction
 Turn any object into a discrete system where each state is a static data container.
 
 
 
-## How to install
+# How to install
 
-The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState).
 The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState):
 
 ```ruby
@@ -19,19 +18,19 @@ pod 'XCEStaticState', '~> 1.1'
 
 
 
-## How it works
+# How it works
 
 This library allows to turn any object into [discrete system](https://en.wikipedia.org/wiki/Discrete_system) by defining a number of distinct states for any object and then set any of these states as current state of the object. Same state can be re-set multiple times without any limitations.
 
 
 
-## How to use
+# How to use
 
 A typical use case for this library is to store different set of internal data at different points of time as well as indicating current internal state of a given object. Any object can only be in one particular state at any point of time, or current state might be undefined.
 
 
 
-### State
+## State
 
 Let's say we have class `MyView`...
 
@@ -66,7 +65,7 @@ extension MyView
 
 
 
-### Stateful
+## Stateful
 
 The object which internal state we want to track must conform to `Stateful` protocol. This protocol does not require to implement anything, but gives exclusive access to special dynamic property:
 
@@ -104,7 +103,7 @@ aView.state = MyView.Disabled(opacity: 0.3)
 
 
 
-### StatefulWithHelpers
+## StatefulWithHelpers
 
 `StatefulWithHelpers` protocol inherits from `Stateful` and allows to deal with `state` property via functions.
 
