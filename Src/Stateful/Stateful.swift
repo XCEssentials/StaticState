@@ -19,7 +19,7 @@ extension Stateful
      
      Use as follows:
      
-     ```
+     ```swift
      class MyView: UIView, Stateful
      {
          struct Normal: State { }
