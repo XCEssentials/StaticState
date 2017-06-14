@@ -12,8 +12,10 @@ Pod::Spec.new do |s|
   s.name                      = companyPrefix + projName
   s.summary                   = projSummary
   s.version                   = '1.1.1'
-  s.homepage                  = companyGitHubPage + '/' + projName
+  s.homepage                  = companyGitHubAccount + '/' + projName
   
+  s.documentation_url         = companyGitHubPage + '/' + projName
+
   s.source                    = { :git => companyGitHubAccount + '/' + projName + '.git', :tag => s.version }
   s.source_files              = 'Src/**/*.swift'
 
