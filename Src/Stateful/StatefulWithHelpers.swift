@@ -118,19 +118,17 @@ extension StatefulWithHelpers
      
      let aView = MyView()
      
-     try? aView.update(MyView.Disabled.self){
+     try? updateState { (disabled: inout MyView.Disabled) in
      
-        $0.opacity += 0.1
+        disabled.opacity += 0.1
      }
      ```
      
-     - Parameter expected: Expected current state type.
      - Parameter mutation: Closure that will be used to mutate current state.
      
      - Throws: `Errors.WrongState` if current state is NOT of `expected` type.
      */
     func update<ExpectedState: State>(
-        _ expected: ExpectedState.Type,
         mutation: (inout ExpectedState) -> Void
         ) throws
     {
