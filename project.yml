@@ -9,6 +9,7 @@ configurations:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
   Release:
     type: "release"
@@ -16,6 +17,7 @@ configurations:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
 targets:
   Fwk:
     platform: "ios"
