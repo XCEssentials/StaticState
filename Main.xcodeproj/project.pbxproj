@@ -252,6 +252,14 @@
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0900;
 				Struct.Version = 2.0.0;
+				TargetAttributes = {
+					4E1C5813B295767F4EBF3C99 = {
+						LastSwiftMigration = 0900;
+					};
+					5D437C2EC85D0FB992008B93 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = 4FCFA10F390BF6C860CAC3B6 /* Build configuration list for PBXProject "Main" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -403,7 +411,6 @@
 			baseConfigurationReference = 5366A4DC2C18E57BC8C5F165 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)",
@@ -414,7 +421,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.XCEssentials.StaticState.Tst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -436,7 +444,8 @@
 				PRODUCT_NAME = XCEStaticState;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -569,7 +578,8 @@
 				PRODUCT_NAME = XCEStaticState;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -581,7 +591,6 @@
 			baseConfigurationReference = 930DB2AA263E2AC159967F27 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)",
@@ -593,7 +602,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.XCEssentials.StaticState.Tst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};

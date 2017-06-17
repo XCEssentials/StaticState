@@ -98,9 +98,9 @@ class Tst_StatefulWithHelpers: XCTestCase
         
         let updatedOpacity: Float = 0.5
         
-        try? aView.update(MyView.Disabled.self) {
+        try? aView.update { (disabled: inout MyView.Disabled) in
             
-            $0.opacity = updatedOpacity
+            disabled.opacity = updatedOpacity
         }
         
         //===

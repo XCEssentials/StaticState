@@ -26,7 +26,9 @@ let project = Project("Main") { p in
         
         "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
         
-        "SWIFT_VERSION" <<< "3.0",
+        "SWIFT_SWIFT3_OBJC_INFERENCE" <<< "Off",
+        "SWIFT_VERSION" <<< "4.0",
+        
         "VERSIONING_SYSTEM" <<< "apple-generic",
         
         "CODE_SIGN_IDENTITY[sdk=iphoneos*]" <<< ""
