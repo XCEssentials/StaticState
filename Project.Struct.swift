@@ -2,7 +2,7 @@ import XCEProjectGenerator
 
 //===
 
-let My =
+let Params =
 (
     repoName: "StaticState",
     deploymentTarget: "8.0",
@@ -12,19 +12,19 @@ let My =
 
 let BundleId =
 (
-    fwk: "\(My.companyIdentifier).\(My.repoName)",
-    tst: "\(My.companyIdentifier).\(My.repoName).Tst"
+    fwk: "\(Params.companyIdentifier).\(Params.repoName)",
+    tst: "\(Params.companyIdentifier).\(Params.repoName).Tst"
 )
 
 //===
 
 let specFormat = Spec.Format.v2_1_0
 
-let project = Project("Main") { p in
+let project = Project("Main") { project in
     
-    p.configurations.all.override(
+    project.configurations.all.override(
         
-        "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
+        "IPHONEOS_DEPLOYMENT_TARGET" <<< Params.deploymentTarget, // bug wokraround
         
         "SWIFT_VERSION" <<< "3.0",
         "VERSIONING_SYSTEM" <<< "apple-generic",
@@ -32,24 +32,24 @@ let project = Project("Main") { p in
         "CODE_SIGN_IDENTITY[sdk=iphoneos*]" <<< ""
     )
     
-    p.configurations.debug.override(
+    project.configurations.debug.override(
         
         "SWIFT_OPTIMIZATION_LEVEL" <<< "-Onone"
     )
     
     //---
     
-    p.target("Fwk", .iOS, .framework) { t in
+    project.target("Fwk", .iOS, .framework) { target in
         
-        t.include("Src")
+        target.include("Sources")
         
         //---
         
-        t.configurations.all.override(
+        target.configurations.all.override(
             
-            "PRODUCT_NAME" <<< "\(My.companyPrefix)\(My.repoName)",
+            "PRODUCT_NAME" <<< "\(Params.companyPrefix)\(Params.repoName)",
             
-            "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
+            "IPHONEOS_DEPLOYMENT_TARGET" <<< Params.deploymentTarget, // bug wokraround
             
             "PRODUCT_BUNDLE_IDENTIFIER" <<< BundleId.fwk,
             "INFOPLIST_FILE" <<< "Info/Fwk.plist",
@@ -65,34 +65,34 @@ let project = Project("Main") { p in
             "SKIP_INSTALL" <<< "YES"
         )
         
-        t.configurations.debug.override(
+        target.configurations.debug.override(
             
             "MTL_ENABLE_DEBUG_INFO" <<< true
         )
         
         //---
     
-        t.unitTests { ut in
+        target.unitTests { unitTests in
             
-            ut.include("Tst")
+            unitTests.include("Tests")
             
             //---
             
-            ut.configurations.all.override(
+            unitTests.configurations.all.override(
                 
                 // very important for unit tests,
                 // prevents the error when unit test do not start at all
                 "LD_RUNPATH_SEARCH_PATHS" <<<
                 "$(inherited) @executable_path/Frameworks @loader_path/Frameworks",
                 
-                "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
+                "IPHONEOS_DEPLOYMENT_TARGET" <<< Params.deploymentTarget, // bug wokraround
                 
                 "PRODUCT_BUNDLE_IDENTIFIER" <<< BundleId.tst,
                 "INFOPLIST_FILE" <<< "Info/Tst.plist",
                 "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(BUILT_PRODUCTS_DIR)"
             )
             
-            ut.configurations.debug.override(
+            unitTests.configurations.debug.override(
                 
                 "MTL_ENABLE_DEBUG_INFO" <<< true
             )
