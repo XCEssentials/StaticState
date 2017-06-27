@@ -13,7 +13,7 @@ Turn any object into a discrete system where each state is a static data contain
 The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState):
 
 ```ruby
-pod 'XCEStaticState', '~> 1.2'
+pod 'XCEStaticState', '~> 1.1'
 ```
 
 
@@ -118,7 +118,7 @@ aView.set(MyView.Normal())
 aView.set(MyView.Disabled(opacity: 0.3))
 // current state of 'aView' object is now 'Disabled' with 'opacity' equal to '0.3'
 
-try? aView.update{ (disabled: inout MyView.Disabled) in disabled.opacity += 0.2 }
+try? aView.update(MyView.Disabled.self){ $0.opacity += 0.2 }
 // current state of 'aView' object is now 'Disabled' with 'opacity' equal to '0.5'
 
 let d: MyView.Disabled = try! aView.currentState()
