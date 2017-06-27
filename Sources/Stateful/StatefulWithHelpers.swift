@@ -1,7 +1,5 @@
 import Foundation
 
-//===
-
 /**
  Provides access to `state` property via functions.
  */
@@ -39,8 +37,6 @@ extension StatefulWithHelpers
         state = newState
     }
     
-    //===
-    
     /**
      Provides read-only access to the `state` property value from `Stateful` protocol.
      
@@ -60,8 +56,6 @@ extension StatefulWithHelpers
     {
         return state
     }
-    
-    //===
     
     /**
      Allows to check if current state is of expected type or not. The `ExpectedState` return type will be inferred from context.
@@ -99,8 +93,6 @@ extension StatefulWithHelpers
             throw Errors.WrongState()
         }
     }
-    
-    //===
     
     /**
      Allows to mutate current state, if it's of expected type.
@@ -145,8 +137,6 @@ extension StatefulWithHelpers
             throw Errors.WrongState()
         }
     }
-    
-    //===
     
     /**
      Sets current state to `nil`.

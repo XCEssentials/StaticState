@@ -1,6 +1,5 @@
 import Foundation
 
-//===
 /**
  Conformance to this protocl turns the type into a state.
  */
@@ -29,7 +28,6 @@ extension State
      aView.state = MyView.Normal()
      print(type(of: aView.state).identifier) // MyApp.MyView.Normal
      ```
-     
      */
     static
     var identifier: String { return String(reflecting: self) }

@@ -1,7 +1,5 @@
 import Foundation
 
-//===
-
 /**
  Enclosing type/scope for all errors that are used in this library.
  */

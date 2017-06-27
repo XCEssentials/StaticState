@@ -2,7 +2,6 @@ import Foundation
 
 import XCEAssociatedStorage
 
-//===
 /**
  Class-based wrapper for instances of `State`-conforming types. Allows to store instances of value types by reference, necessary for placing value type based state instances into collections like `NSMapTable`.
  */
@@ -13,25 +12,6 @@ class StateWrapper
      The wrapped value itself. Can be updated/mutated during life time of the wrapper. It's `nil` in the beginning, until current state is set explicitly.
      */
     var current: State?
-    
-    //===
-    
-    /**
-     This initializer does nothing, but it's declared private to ensure that the wrapper type won't be instantiated directly, the designated way of use of this class is via the static `get` function.
-     */
-    private
-    init() { }
-    
-    //===
-    
-    /**
-     Internal global storage of current states of all instances of all types that conform to `Stateful` protocol.
-     */
-    private
-    static
-    var storage = AssociatedStorage()
-    
-    //===
     
     /**
      Provides access to current state wrapper for the given object.
@@ -47,6 +27,17 @@ class StateWrapper
     {
         return storage.get(for: obj){ _ in return StateWrapper() }
     }
+    
+    /**
+     Internal global storage of current states of all instances of all types that conform to `Stateful` protocol.
+     */
+    private
+    static
+    var storage = AssociatedStorage()
+    
+    /**
+     This initializer does nothing, but it's declared private to ensure that the wrapper type won't be instantiated directly, the designated way of use of this class is via the static `get` function.
+     */
+    private
+    init() { }
 }
-
-//===
