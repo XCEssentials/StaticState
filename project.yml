@@ -23,7 +23,7 @@ targets:
     platform: "ios"
     type: ":framework"
     sources:
-    - "Src"
+    - "Sources"
     configurations:
       Debug:
         PRODUCT_NAME: "XCEStaticState"
@@ -50,7 +50,7 @@ targets:
     references:
     - "Fwk"
     sources:
-    - "Tst"
+    - "Tests"
     configurations:
       Debug:
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
