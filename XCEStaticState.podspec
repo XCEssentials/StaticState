@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target     = '8.0'
   s.requires_arc              = true
   
-  # s.dependency                'AAA', '~> X.Y.Z'
+  s.dependency                'XCEAssociatedStorage', '~> 1.0'
 
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }
   s.author                    = { 'Maxim Khatskevich' => 'maxim@khatskevi.ch' }
