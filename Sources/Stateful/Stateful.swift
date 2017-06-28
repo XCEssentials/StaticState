@@ -13,12 +13,21 @@ protocol Stateful: class
      Use as follows:
      
      ```swift
-     class MyView: UIView, Stateful
+     class MyView: Stateful
      {
-        struct Normal: State { }
-        struct Highlighted: State { let color: Int }
+        struct Normal: State
+        {
+            typealias Owner = MyView
+        }
      
-        var state: State?
+        struct Highlighted: State
+        {
+            typealias Owner = MyView
+     
+            let color: Int
+        }
+     
+        var state: Any?
      }
      
      let aView = MyView()
@@ -28,5 +37,173 @@ protocol Stateful: class
      print(aView.state) // MyView.Highlighted(color: 1)
      ```
      */
-    var state: State? { get set }
+    var state: Any? { get set }
+}
+
+//===
+
+extension Stateful
+{
+    /**
+     Allows to set current state to `newState`.
+     
+     Use as follows:
+     
+     ```swift
+     class MyView: Stateful
+     {
+         struct Disabled: State
+         {
+             typealias Owner = MyView
+             
+             var opacity: Float
+         }
+     
+         var state: Any?
+     }
+     
+     let aView = MyView()
+     
+     aView.set(MyView.Disabled(opacity: 0.3))
+     ```
+     
+     - Parameter newState: An instance of type that conforms to `State` protocol, or `nil`. This value will be set as new current state.
+     */
+    func set<Input>(_ newState: Input?) where
+        Input: State,
+        Input.Owner == Self
+    {
+        state = newState
+    }
+    
+    /**
+     Provides read-only access to the `state` property value from `Stateful` protocol.
+     
+     Use as follows:
+     
+     ```swift
+     class MyView: Stateful
+     {
+        var state: State?
+     }
+     
+     let aView = MyView()
+     
+     let current = aView.currentState()
+     ```
+     
+     - Returns: Current state without conversion to a specific state type, if it's set, or `nil` otherwise.
+     */
+    func currentState() -> Any?
+    {
+        return state
+    }
+    
+    /**
+     Allows to mutate current state, if it's of `ExpectedState` type.
+     
+     Use as follows:
+     
+     ```swift
+     class MyView: Stateful
+     {
+        struct Disabled: State
+        {
+            typealias Owner = MyView
+     
+            var opacity: Float
+        }
+         
+        var state: Any?
+     }
+     
+     let aView = MyView()
+     
+     try? aView.update(MyView.Disabled.self){
+     
+        $0.opacity += 0.1
+     }
+     ```
+     
+     - Parameter expected: Expected current state type.
+     - Parameter mutation: Closure that will be used to mutate current state.
+     
+     - Throws: `Errors.WrongState` if current state is NOT of `expected` type.
+     */
+    func update<ExpectedState>(
+        _ expected: ExpectedState.Type,
+        mutation: (inout ExpectedState) -> Void
+        ) throws
+        where
+        ExpectedState: State,
+        ExpectedState.Owner == Self
+    {
+        if
+            var result = state as? ExpectedState
+        {
+            mutation(&result)
+            state = result
+        }
+        else
+        {
+            throw Errors.WrongState()
+        }
+    }
+    
+    /**
+     Allows to mutate current state, if it's of `ExpectedState` type.
+     
+     Use as follows:
+     
+     ```swift
+     class MyView: Stateful
+     {
+        struct Disabled: State
+        {
+            typealias Owner = MyView
+     
+            var opacity: Float
+        }
+     
+        var state: Any?
+     }
+     
+     let aView = MyView()
+     
+     try? aView.update{ (disabled: inout MyView.Disabled) in
+     
+        disabled.opacity += 0.1
+     }
+     ```
+     
+     - Parameter mutation: Closure that will be used to mutate current state.
+     
+     - Throws: `Errors.WrongState` if current state is NOT of `expected` type.
+     */
+    func update<ExpectedState>(
+        _ mutation: (inout ExpectedState) -> Void
+        ) throws
+        where
+        ExpectedState: State,
+        ExpectedState.Owner == Self
+    {
+        if
+            var result = state as? ExpectedState
+        {
+            mutation(&result)
+            state = result
+        }
+        else
+        {
+            throw Errors.WrongState()
+        }
+    }
+    
+    /**
+     Sets current state to `nil`.
+     */
+    func resetCurrentState()
+    {
+        return state = nil
+    }
 }

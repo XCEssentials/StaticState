@@ -11,10 +11,8 @@
 		39D7AF9FBF9B10D5E0E4E177 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792082058C9AFD04FC9D4534 /* Errors.swift */; };
 		3D477AA35DDE0176B145F698 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3236701DCD0452833B0A079A /* Pods_Tests.framework */; };
 		41B30C573836240BA6777573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B080C2C20793295B862655F /* Foundation.framework */; };
-		64B102D405B37F51B0C992F7 /* StatefulWithHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */; };
 		99DF2E1AB45BAADD464BCD7F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98CEB7BE8DFA1D4C160482 /* State.swift */; };
 		A19974A2F10AFBC42E2BFEB7 /* StatefulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E627B24BA6605978F64C6AEE /* StatefulTests.swift */; };
-		C595BF43144255E0B9326728 /* StatefulWithHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */; };
 		C7902EBE75F3C644DE435514 /* Pods_Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6803516C22F7155B0426931F /* Pods_Fwk.framework */; };
 		D98EF66FB6A8820A15B54C46 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4188489BE89CA3E43A64F72 /* MyView.swift */; };
 		F7375A1CFC236475C5058662 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD29E67A467134A468950C4 /* Stateful.swift */; };
@@ -67,8 +65,6 @@
 		CAD9ACF79B25E0E8DD967F87 /* Pods-Fwk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD29E67A467134A468950C4 /* Stateful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
 		E627B24BA6605978F64C6AEE /* StatefulTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulTests.swift; sourceTree = "<group>"; };
-		ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulWithHelpersTests.swift; sourceTree = "<group>"; };
-		EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulWithHelpers.swift; sourceTree = "<group>"; };
 		FBACA593CF8FF3DAE89F33FB /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fwk.framework; path = XCEStaticState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,7 +95,6 @@
 			children = (
 				7D815B8BBB6C282057A81A06 /* Spec */,
 				E627B24BA6605978F64C6AEE /* StatefulTests.swift */,
-				ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -182,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				CCD29E67A467134A468950C4 /* Stateful.swift */,
-				EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */,
 			);
 			path = Stateful;
 			sourceTree = "<group>";
@@ -368,7 +362,6 @@
 				39D7AF9FBF9B10D5E0E4E177 /* Errors.swift in Sources */,
 				99DF2E1AB45BAADD464BCD7F /* State.swift in Sources */,
 				F7375A1CFC236475C5058662 /* Stateful.swift in Sources */,
-				C595BF43144255E0B9326728 /* StatefulWithHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +371,6 @@
 			files = (
 				D98EF66FB6A8820A15B54C46 /* MyView.swift in Sources */,
 				A19974A2F10AFBC42E2BFEB7 /* StatefulTests.swift in Sources */,
-				64B102D405B37F51B0C992F7 /* StatefulWithHelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
