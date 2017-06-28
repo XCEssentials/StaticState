@@ -4,7 +4,10 @@ import Foundation
  Conformance to this protocl turns the type into a state.
  */
 public
-protocol State { }
+protocol State
+{
+    associatedtype Owner: AnyObject
+}
 
 //===
 
