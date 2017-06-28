@@ -7,8 +7,7 @@ configurations:
     type: "debug"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-      SWIFT_SWIFT3_OBJC_INFERENCE: "Off"
-      SWIFT_VERSION: "4.0"
+      SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
       CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
@@ -16,8 +15,7 @@ configurations:
     type: "release"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-      SWIFT_SWIFT3_OBJC_INFERENCE: "Off"
-      SWIFT_VERSION: "4.0"
+      SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
       CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
 targets:
@@ -25,7 +23,7 @@ targets:
     platform: "ios"
     type: ":framework"
     sources:
-    - "Src"
+    - "Sources"
     configurations:
       Debug:
         PRODUCT_NAME: "XCEStaticState"
@@ -52,7 +50,7 @@ targets:
     references:
     - "Fwk"
     sources:
-    - "Tst"
+    - "Tests"
     configurations:
       Debug:
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"

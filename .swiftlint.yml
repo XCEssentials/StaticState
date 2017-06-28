@@ -1,8 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
   - opening_brace
 included: # paths to include during linting. `--path` is ignored if present.
-  - Src
-  - Tst
+  - Sources
+  - Tests
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
