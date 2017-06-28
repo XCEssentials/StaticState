@@ -1,7 +1,5 @@
 import Foundation
 
-//===
-
 /**
  Provides access to `state` property via functions.
  */
@@ -25,6 +23,8 @@ extension StatefulWithHelpers
          {
              var opacity: Float
          }
+         
+         var state: State?
      }
      
      let aView = MyView()
@@ -39,15 +39,13 @@ extension StatefulWithHelpers
         state = newState
     }
     
-    //===
-    
     /**
      Provides read-only access to the `state` property value from `Stateful` protocol.
      
      Use as follows:
      
      ```swift
-     class MyView: UIView, StatefulWithHelpers { }
+     class MyView: UIView, StatefulWithHelpers { var state: State? }
      
      let aView = MyView()
      
@@ -61,8 +59,6 @@ extension StatefulWithHelpers
         return state
     }
     
-    //===
-    
     /**
      Allows to check if current state is of expected type or not. The `ExpectedState` return type will be inferred from context.
      
@@ -71,7 +67,9 @@ extension StatefulWithHelpers
      ```swift
      class MyView: UIView, StatefulWithHelpers
      {
-        struct Normal: State { }
+         struct Normal: State { }
+         
+         var state: State?
      }
      
      let aView = MyView()
@@ -100,8 +98,6 @@ extension StatefulWithHelpers
         }
     }
     
-    //===
-    
     /**
      Allows to mutate current state, if it's of expected type.
      
@@ -113,7 +109,9 @@ extension StatefulWithHelpers
         struct Disabled: State
         {
             var opacity: Float
-        }
+         }
+         
+         var state: State?
      }
      
      let aView = MyView()
@@ -145,8 +143,6 @@ extension StatefulWithHelpers
             throw Errors.WrongState()
         }
     }
-    
-    //===
     
     /**
      Sets current state to `nil`.

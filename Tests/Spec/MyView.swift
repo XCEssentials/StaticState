@@ -5,11 +5,14 @@ import XCEStaticState
 //===
 
 final
-class MyView { }
+class MyView: StatefulWithHelpers
+{
+    var state: State?
+}
 
 //=== States
 
-extension MyView: StatefulWithHelpers
+extension MyView
 {
     struct Normal: State { }
     

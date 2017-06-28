@@ -20,7 +20,7 @@ end
 target 'Tests' do
 
 	project projName
-    
+
     #===
     
     pod 'XCETesting', '~> 1.1'

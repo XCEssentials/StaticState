@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.name                      = companyPrefix + projName
   s.summary                   = projSummary
-  s.version                   = '1.2.1'
+  s.version                   = '1.1.3'
   s.homepage                  = companyGitHubAccount + '/' + projName
   
   s.documentation_url         = companyGitHubPage + '/' + projName
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target     = '8.0'
   s.requires_arc              = true
   
-  # s.dependency                'AAA', '~> X.Y.Z'
+  # s.dependency                'AAA', '~> X.Y'
 
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }
   s.author                    = { 'Maxim Khatskevich' => 'maxim@khatskevi.ch' }
