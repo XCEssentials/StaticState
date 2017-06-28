@@ -26,7 +26,7 @@ This library allows to turn any object into [discrete system](https://en.wikiped
 
 # How to use
 
-A typical use case for this library is to store different set of internal data at different points of time as well as indicating current internal state of a given object. Any object can only be in one particular state at any point of time, or current state might be undefined.
+A typical use case for this library is to store different set of internal data (and provide access to diffrent functionality, incapsulated in state types) at different points of time as well as indicating current internal state of a given object. Any object can only be in one particular state at any point of time, or current state might be undefined.
 
 
 
@@ -67,17 +67,24 @@ extension MyView
 
 ## Stateful
 
-The object which internal state we want to track must conform to `Stateful` protocol. This protocol does not require to implement anything, but gives exclusive access to special dynamic property:
+The object which internal state we want to track must conform to `Stateful` protocol. This protocol only requires to declare internal var property `state` like this:
 
 ```swift
 var state: State?
 ```
 
+Let's update the initial class declaration:
+
+```swift
+class MyView: Stateful
+{
+	var state: State?
+}
+```
+
 We can set current state as follows:
 
 ```swift
-extension MyView: Stateful { }
-
 let aView = MyView()
 
 aView.state = MyView.Disabled(opacity: 0.3)
@@ -105,11 +112,18 @@ aView.state = MyView.Disabled(opacity: 0.3)
 
 ## StatefulWithHelpers
 
+Alternatively, we could declare our class like this:
+
+```swift
+class MyView: StatefulWithHelpers
+{
+	var state: State?
+}
+```
+
 `StatefulWithHelpers` protocol inherits from `Stateful` and allows to deal with `state` property via functions.
 
 ```swift
-extension MyView: StatefulWithHelpers { }
-
 let aView = MyView()
 
 aView.set(MyView.Normal())

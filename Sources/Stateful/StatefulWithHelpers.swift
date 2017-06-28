@@ -23,6 +23,8 @@ extension StatefulWithHelpers
          {
              var opacity: Float
          }
+         
+         var state: State?
      }
      
      let aView = MyView()
@@ -43,7 +45,7 @@ extension StatefulWithHelpers
      Use as follows:
      
      ```swift
-     class MyView: UIView, StatefulWithHelpers { }
+     class MyView: UIView, StatefulWithHelpers { var state: State? }
      
      let aView = MyView()
      
@@ -65,7 +67,9 @@ extension StatefulWithHelpers
      ```swift
      class MyView: UIView, StatefulWithHelpers
      {
-        struct Normal: State { }
+         struct Normal: State { }
+         
+         var state: State?
      }
      
      let aView = MyView()
@@ -105,7 +109,9 @@ extension StatefulWithHelpers
         struct Disabled: State
         {
             var opacity: Float
-        }
+         }
+         
+         var state: State?
      }
      
      let aView = MyView()
