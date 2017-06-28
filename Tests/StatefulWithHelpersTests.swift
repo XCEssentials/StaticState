@@ -7,7 +7,7 @@ import XCETesting
 
 //===
 
-class Tst_StatefulWithHelpers: XCTestCase
+class StatefulWithHelpersTests: XCTestCase
 {
     let aView = MyView()
     

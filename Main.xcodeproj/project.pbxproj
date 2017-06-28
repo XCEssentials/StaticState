@@ -11,10 +11,9 @@
 		39D7AF9FBF9B10D5E0E4E177 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792082058C9AFD04FC9D4534 /* Errors.swift */; };
 		3D477AA35DDE0176B145F698 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3236701DCD0452833B0A079A /* Pods_Tests.framework */; };
 		41B30C573836240BA6777573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B080C2C20793295B862655F /* Foundation.framework */; };
-		64B102D405B37F51B0C992F7 /* Tst_StatefulWithHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BD420BB20282F31F1281F /* Tst_StatefulWithHelpers.swift */; };
-		99A2CD2C8DBFA46825F74100 /* StateWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A7AEDABB95714780BCAFC4 /* StateWrapper.swift */; };
+		64B102D405B37F51B0C992F7 /* StatefulWithHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */; };
 		99DF2E1AB45BAADD464BCD7F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98CEB7BE8DFA1D4C160482 /* State.swift */; };
-		A19974A2F10AFBC42E2BFEB7 /* Tst_Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = E627B24BA6605978F64C6AEE /* Tst_Stateful.swift */; };
+		A19974A2F10AFBC42E2BFEB7 /* StatefulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E627B24BA6605978F64C6AEE /* StatefulTests.swift */; };
 		C595BF43144255E0B9326728 /* StatefulWithHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */; };
 		C7902EBE75F3C644DE435514 /* Pods_Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6803516C22F7155B0426931F /* Pods_Fwk.framework */; };
 		D98EF66FB6A8820A15B54C46 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4188489BE89CA3E43A64F72 /* MyView.swift */; };
@@ -58,7 +57,6 @@
 		1BD33E28F45CF7290BE1281B /* Pods-Fwk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.release.xcconfig"; sourceTree = "<group>"; };
 		2A98CEB7BE8DFA1D4C160482 /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		3236701DCD0452833B0A079A /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		39A7AEDABB95714780BCAFC4 /* StateWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StateWrapper.swift; sourceTree = "<group>"; };
 		3B080C2C20793295B862655F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6803516C22F7155B0426931F /* Pods_Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		792082058C9AFD04FC9D4534 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -68,10 +66,10 @@
 		C4188489BE89CA3E43A64F72 /* MyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		CAD9ACF79B25E0E8DD967F87 /* Pods-Fwk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD29E67A467134A468950C4 /* Stateful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
-		E627B24BA6605978F64C6AEE /* Tst_Stateful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Tst_Stateful.swift; sourceTree = "<group>"; };
-		ED4BD420BB20282F31F1281F /* Tst_StatefulWithHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Tst_StatefulWithHelpers.swift; sourceTree = "<group>"; };
+		E627B24BA6605978F64C6AEE /* StatefulTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulTests.swift; sourceTree = "<group>"; };
+		ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulWithHelpersTests.swift; sourceTree = "<group>"; };
 		EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatefulWithHelpers.swift; sourceTree = "<group>"; };
-		FBACA593CF8FF3DAE89F33FB /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBACA593CF8FF3DAE89F33FB /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fwk.framework; path = XCEStaticState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				7D815B8BBB6C282057A81A06 /* Spec */,
-				E627B24BA6605978F64C6AEE /* Tst_Stateful.swift */,
-				ED4BD420BB20282F31F1281F /* Tst_StatefulWithHelpers.swift */,
+				E627B24BA6605978F64C6AEE /* StatefulTests.swift */,
+				ED4BD420BB20282F31F1281F /* StatefulWithHelpersTests.swift */,
 			);
-			name = Tests;
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -111,16 +108,14 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$local";
+			name = $local;
 			sourceTree = "<group>";
 		};
 		1F7A28BFB7A7D777F1EBEC7C /* State */ = {
 			isa = PBXGroup;
 			children = (
 				2A98CEB7BE8DFA1D4C160482 /* State.swift */,
-				39A7AEDABB95714780BCAFC4 /* StateWrapper.swift */,
 			);
-			name = State;
 			path = State;
 			sourceTree = "<group>";
 		};
@@ -131,7 +126,6 @@
 				1F7A28BFB7A7D777F1EBEC7C /* State */,
 				F09CFBFFB4ACDEF4239DD9C6 /* Stateful */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -159,7 +153,6 @@
 			children = (
 				C4188489BE89CA3E43A64F72 /* MyView.swift */,
 			);
-			name = Spec;
 			path = Spec;
 			sourceTree = "<group>";
 		};
@@ -191,7 +184,6 @@
 				CCD29E67A467134A468950C4 /* Stateful.swift */,
 				EEC762ADF7571A206F73F073 /* StatefulWithHelpers.swift */,
 			);
-			name = Stateful;
 			path = Stateful;
 			sourceTree = "<group>";
 		};
@@ -320,7 +312,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-			showEnvVarsInLog = 1;
 		};
 		812A23F6BBE30736BB16BE5A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -378,7 +369,6 @@
 				99DF2E1AB45BAADD464BCD7F /* State.swift in Sources */,
 				F7375A1CFC236475C5058662 /* Stateful.swift in Sources */,
 				C595BF43144255E0B9326728 /* StatefulWithHelpers.swift in Sources */,
-				99A2CD2C8DBFA46825F74100 /* StateWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98EF66FB6A8820A15B54C46 /* MyView.swift in Sources */,
-				A19974A2F10AFBC42E2BFEB7 /* Tst_Stateful.swift in Sources */,
-				64B102D405B37F51B0C992F7 /* Tst_StatefulWithHelpers.swift in Sources */,
+				A19974A2F10AFBC42E2BFEB7 /* StatefulTests.swift in Sources */,
+				64B102D405B37F51B0C992F7 /* StatefulWithHelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
