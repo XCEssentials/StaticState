@@ -89,7 +89,7 @@ extension Stateful
      
      let aView = MyView()
      
-     let current = aView.currentState()
+     let current = aView.currentState() // same as access 'aView.state' directly
      ```
      
      - Returns: Current state without conversion to a specific state type, if it's set, or `nil` otherwise.
