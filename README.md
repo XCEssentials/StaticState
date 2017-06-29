@@ -13,7 +13,7 @@ Turn any object into a discrete system where each state is a static data contain
 The recommended way is to install using [CocoaPods](https://cocoapods.org/?q=XCEStaticState):
 
 ```ruby
-pod 'XCEStaticState', '~> 1.1'
+pod 'XCEStaticState', '~> 1.2'
 ```
 
 
