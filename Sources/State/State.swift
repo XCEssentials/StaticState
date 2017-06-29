@@ -59,3 +59,8 @@ extension State
             + " state: \(String(reflecting: type(of: self)))"
     }
 }
+
+//===
+
+public
+typealias SSTState = State

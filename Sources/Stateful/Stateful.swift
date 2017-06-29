@@ -207,3 +207,8 @@ extension Stateful
         return state = nil
     }
 }
+
+//===
+
+public
+typealias SSTStateful = Stateful

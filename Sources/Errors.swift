@@ -12,3 +12,8 @@ enum Errors // scope
     public
     struct WrongState: Error { }
 }
+
+//===
+
+public
+typealias SSTErrors = Errors
