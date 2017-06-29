@@ -48,16 +48,20 @@ extension MyView
 {
     struct Normal: State
     {
-    	// no members here
+    	typealias Owner = MyView
     }
     
     struct Disabled: State
     {
+	    typealias Owner = MyView
+	    
         var opacity: Float
     }
     
     struct Highlighted: State
     {
+    	typealias Owner = MyView
+    
         let color: Int
     }
 }
@@ -67,10 +71,10 @@ extension MyView
 
 ## Stateful
 
-The object which internal state we want to track must conform to `Stateful` protocol. This protocol only requires to declare internal var property `state` like this:
+Any object for which we want to track its current state should be of type that conforms to `Stateful` protocol. That protocol only requires to declare one var property `state` where current state supposed to be stored:
 
 ```swift
-var state: State?
+var state: Any?
 ```
 
 Let's update the initial class declaration:
@@ -78,7 +82,7 @@ Let's update the initial class declaration:
 ```swift
 class MyView: Stateful
 {
-	var state: State?
+	var state: Any?
 }
 ```
 
@@ -110,18 +114,9 @@ aView.state = MyView.Disabled(opacity: 0.3)
 
 
 
-## StatefulWithHelpers
+## Helper functions
 
-Alternatively, we could declare our class like this:
-
-```swift
-class MyView: StatefulWithHelpers
-{
-	var state: State?
-}
-```
-
-`StatefulWithHelpers` protocol inherits from `Stateful` and allows to deal with `state` property via functions.
+Moreover, `Stateful` protocol provides provides several functions that allow to dial with state solely via functions.
 
 ```swift
 let aView = MyView()
@@ -135,8 +130,11 @@ aView.set(MyView.Disabled(opacity: 0.3))
 try? aView.update(MyView.Disabled.self){ $0.opacity += 0.2 }
 // current state of 'aView' object is now 'Disabled' with 'opacity' equal to '0.5'
 
-let d: MyView.Disabled = try! aView.currentState()
-// 'd' now holds an instace of 'Disabled' type with 'opacity' equal to '0.5'
+if
+	let d = try? aView.currentState() as? MyView.Disabled
+{
+	// 'd' now holds an instace of 'Disabled' type with 'opacity' equal to '0.5'
+}
 
 aView.resetCurrentState()
 // current state of 'aView' object is now 'nil'

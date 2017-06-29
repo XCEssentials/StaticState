@@ -4,24 +4,24 @@ import Foundation
  Conformance to this protocl turns the type into a state.
  */
 public
-protocol State { }
-
-//===
-
-public
-extension State
+protocol State: Equatable
 {
+    /**
+     Reference-based type to which this state might be applied.
+     */
+    associatedtype Owner: AnyObject
+    
     /**
      Unique identifier of the state.
      
-     Returns: An instance of `String` that contains full name of the type/state, inclduing module name and enclosing types (if this is a nested type).
+     Having this on instance level gives opportunity to distinct different instances of the same type, if needed.
      
      Use as follows (assume the module name is "MyApp"):
      
      ```swift
      class MyView: UIView, Stateful
      {
-         struct Normal: State { }
+         struct Normal: State { typealias Owner = MyView }
      }
      
      let aView = MyView()
@@ -29,6 +29,38 @@ extension State
      print(type(of: aView.state).identifier) // MyApp.MyView.Normal
      ```
      */
-    static
-    var identifier: String { return String(reflecting: self) }
+    var identifier: String { get }
 }
+
+/**
+ Default implementation of `Equatable` protocol.
+ */
+extension State
+{
+    public
+    static
+    func == (left: Self, right: Self) -> Bool
+    {
+        return left.identifier == right.identifier
+    }
+}
+
+//===
+
+public
+extension State
+{
+    /**
+     Default implementation of `identifier` instance level property is based on recommended behavior when any two instances of the same state have identical identifiers, regardless of any internal data/properties.
+     */
+    var identifier: String
+    {
+        return "Owner: \(String(reflecting: Owner.self)),"
+            + " state: \(String(reflecting: type(of: self)))"
+    }
+}
+
+//===
+
+public
+typealias SSTState = State

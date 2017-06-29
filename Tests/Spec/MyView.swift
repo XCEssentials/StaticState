@@ -5,21 +5,26 @@ import XCEStaticState
 //===
 
 final
-class MyView: StatefulWithHelpers
+class MyView: Stateful
 {
-    var state: State?
+    var state: Any?
 }
 
 //=== States
 
 extension MyView
 {
-    struct Normal: State { }
+    struct Normal: State
+    {
+        typealias Owner = MyView
+    }
     
     //===
     
     struct Disabled: State
     {
+        typealias Owner = MyView
+        
         var opacity: Float
     }
     
@@ -27,6 +32,8 @@ extension MyView
     
     struct Highlighted: State
     {
+        typealias Owner = MyView
+        
         let color: Int
     }
 }
